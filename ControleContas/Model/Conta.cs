@@ -12,7 +12,7 @@ namespace ControleContas.Model
         public const string SaqueMenorQueZeroMessage = "Valor informado para saque nao pode ser negativo";
         public const string SaqueMaiorQueSaldoMessage = "Valor informado para saque ultrapassa o saldo disponivel";
         private string _numero;
-        private decimal _saldo;
+        protected decimal _saldo = 10.00m;
         private static decimal _saldoTotal;
         private static string _contaMaiorSaldo = "";
         private static decimal _maiorSaldo = 0;
@@ -44,7 +44,7 @@ namespace ControleContas.Model
         }
         public decimal Saldo { 
             get => _saldo; 
-            private set => _saldo = value; 
+            protected set => _saldo = value; 
         }
         public decimal SaldoTotal { 
             get => _saldoTotal; 
@@ -56,7 +56,7 @@ namespace ControleContas.Model
             get => _contaMaiorSaldo;
         }
 
-        public bool Sacar(decimal valor)
+        public virtual bool Sacar(decimal valor)
         {
             
             if(_saldo + 0.10m < valor)
@@ -83,9 +83,9 @@ namespace ControleContas.Model
 
         public bool Transferir(Conta destino, decimal valor)
         {
-            if (destino.Sacar(valor))
+            if (Sacar(valor))
             {
-                Depositar(valor);
+                destino.Depositar(valor);
                 return true;
             }
                
