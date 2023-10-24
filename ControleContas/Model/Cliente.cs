@@ -22,5 +22,7 @@ namespace ControleContas.Model
             Cpf = cpf;
             AnoNascimento = anoNascimento;
         }
+
+      
     }
 }

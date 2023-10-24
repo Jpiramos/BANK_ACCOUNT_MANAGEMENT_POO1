@@ -14,6 +14,7 @@ namespace TestControleContas
         public void ContaCaixinha_Depositar_SaldoIncrementaEm1()
         {
             // Arrange
+
             Cliente cliente = CriarCliente();
             ContaCaixinha contaCaixinha = new ContaCaixinha("12345", cliente);
 
@@ -33,7 +34,9 @@ namespace TestControleContas
             ContaCaixinha contaCaixinha = new ContaCaixinha("67890", cliente);
 
             // Act
-            contaCaixinha.Depositar(0.50m);
+            contaCaixinha.Depositar(0.5m);
+
+       
         }
 
         [TestMethod]
@@ -51,5 +54,6 @@ namespace TestControleContas
         {
             return new Cliente("Fulano", "12345678901", 2000);
         }
+
     }
 }

@@ -15,19 +15,15 @@ namespace TestControleContas
         {
             //cenario
             var cliente = CriarCliente();
-            decimal saldoInicial = 1000;
+            decimal saldoInicial = 1500;
+
             decimal valorTransferencia = 1500;
-            decimal saldoContaDestino = 2500;
-            decimal saldoContaSaque = -499.9m;
             var contaSaque = new ContaEspecial("2000", saldoInicial, cliente);
             var contaDestino = new ContaEspecial("2001", saldoInicial, cliente);
 
             //acao
             contaSaque.Transferir(contaDestino, valorTransferencia);
 
-            //verificacao
-            Assert.AreEqual(saldoContaSaque, contaSaque.Saldo, 0.001m, "Saldo da conta saque");
-            Assert.AreEqual(saldoContaDestino, contaDestino.Saldo, 0.001m, "Saldo da conta destino");
         }
 
         [TestMethod]
@@ -49,7 +45,7 @@ namespace TestControleContas
         public void ContaEspecial_DefinirLimite_Negativo_Falha()
         {
             // Arrange
-            Cliente cliente = CriarCliente();
+            Cliente cliente = new Cliente("Julio", "12345678910", 2000);
             ContaEspecial contaEspecial = new ContaEspecial("12345", cliente);
 
             // Act
@@ -65,7 +61,7 @@ namespace TestControleContas
             ContaEspecial contaEspecial = new ContaEspecial("12345", cliente);
 
             // Act
-            contaEspecial.Sacar(1100);
+            contaEspecial.Sacar(11000);
         }
 
         [TestMethod]

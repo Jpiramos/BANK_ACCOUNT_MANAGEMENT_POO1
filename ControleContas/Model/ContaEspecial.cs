@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,6 +36,20 @@ namespace ControleContas.Model
                 throw new ArgumentOutOfRangeException("Valor do Saque excedido", valor, SaqueMaiorQueSaldoMessage);
             }
             Saldo -= valor - 0.10m;
+            return true;
+        }
+
+        public bool DefinirLimite(int Limite1)
+        {
+            if (Limite1 < 0)
+            {
+
+                throw new ArgumentOutOfRangeException("Limite Não Pode ser menor que Zero");
+
+            }
+
+
+            Limite = Limite1;
             return true;
         }
     }

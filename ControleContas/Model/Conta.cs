@@ -25,7 +25,7 @@ namespace ControleContas.Model
             Titular = titular;
         }
 
-        public Conta(string numero, decimal saldo, Cliente titular) 
+        public Conta(string numero, decimal saldo, Cliente titular)
         {
             _saldo = saldo;
             _numero = numero;
@@ -38,17 +38,20 @@ namespace ControleContas.Model
             }
         }
 
-        public string Numero {
-            get => _numero; 
-            private set => _numero = value; 
+        public string Numero
+        {
+            get => _numero;
+            private set => _numero = value;
         }
-        public decimal Saldo { 
-            get => _saldo; 
-            protected set => _saldo = value; 
+        public decimal Saldo
+        {
+            get => _saldo;
+            protected set => _saldo = value;
         }
-        public decimal SaldoTotal { 
-            get => _saldoTotal; 
-            private set => _saldoTotal = value; 
+        public decimal SaldoTotal
+        {
+            get => _saldoTotal;
+            private set => _saldoTotal = value;
         }
 
         public string ContaMaiorSaldo
@@ -58,12 +61,12 @@ namespace ControleContas.Model
 
         public virtual bool Sacar(decimal valor)
         {
-            
-            if(_saldo + 0.10m < valor)
+
+            if (_saldo + 0.10m < valor)
             {
                 throw new ArgumentOutOfRangeException("Valor do Saque", valor, SaqueMaiorQueSaldoMessage);
             }
-            if(valor < 0)
+            if (valor < 0)
             {
                 throw new ArgumentOutOfRangeException("Valor do Saque", valor, SaqueMenorQueZeroMessage);
             }
@@ -71,9 +74,9 @@ namespace ControleContas.Model
             return true;
         }
 
-        public bool Depositar(decimal valor)
+        public virtual bool Depositar(decimal valor)
         {
-            if(valor < 0)
+            if (valor < 0)
             {
                 throw new ArgumentOutOfRangeException("Deposito Invalido", valor.ToString(), "Valor para depósito não pode ser negativo");
             }
@@ -88,7 +91,7 @@ namespace ControleContas.Model
                 destino.Depositar(valor);
                 return true;
             }
-               
+
             return false;
         }
 
