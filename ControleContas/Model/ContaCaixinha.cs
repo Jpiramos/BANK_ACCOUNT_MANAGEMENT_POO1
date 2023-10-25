@@ -28,7 +28,7 @@ namespace ControleContas.Model
             if (valor > _saldo)
             {
 
-                throw new ArgumentOutOfRangeException("Valor do Saque é maior que o Saldo Disponivel");
+                throw new InvalidOperationException("Valor do Saque é maior que o Saldo Disponivel");
 
             }
             _saldo = valor - taxaDecremento;
@@ -49,7 +49,7 @@ namespace ControleContas.Model
         {
             if (valor < 1)
             {
-                throw new ArgumentOutOfRangeException("Valor do depósito deve ser maior que 1");
+                throw new ArgumentException("Valor do depósito deve ser maior que 1");
             }
             _saldo += valor + taxaIncremento;
 

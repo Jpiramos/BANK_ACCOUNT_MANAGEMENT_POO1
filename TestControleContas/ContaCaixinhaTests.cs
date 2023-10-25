@@ -36,7 +36,7 @@ namespace TestControleContas
             // Act
             contaCaixinha.Depositar(0.5m);
 
-       
+
         }
 
         [TestMethod]
@@ -48,7 +48,7 @@ namespace TestControleContas
             ContaCaixinha contaCaixinha = new ContaCaixinha("13579", cliente);
 
             // Act
-            contaCaixinha.Sacar(100);
+            contaCaixinha.Sacar(50000);
         }
         private Cliente CriarCliente()
         {

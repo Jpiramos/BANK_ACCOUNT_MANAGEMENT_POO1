@@ -33,7 +33,7 @@ namespace ControleContas.Model
         {
             if (Saldo + Limite - valor - 0.10m < 0)
             {
-                throw new ArgumentOutOfRangeException("Valor do Saque excedido", valor, SaqueMaiorQueSaldoMessage);
+                throw new InvalidOperationException("Valor do Saque excedido");
             }
             Saldo -= valor - 0.10m;
             return true;
@@ -44,7 +44,7 @@ namespace ControleContas.Model
             if (Limite1 < 0)
             {
 
-                throw new ArgumentOutOfRangeException("Limite Não Pode ser menor que Zero");
+                throw new ArgumentException("Limite Não Pode ser menor que Zero");
 
             }
 
