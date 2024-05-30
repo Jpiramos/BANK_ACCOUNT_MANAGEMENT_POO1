@@ -31,7 +31,7 @@ namespace ControleContas.Model
                 throw new InvalidOperationException("Valor do Saque é maior que o Saldo Disponivel");
 
             }
-            _saldo = valor - taxaDecremento;
+            _saldo -= valor + taxaDecremento;
 
             return true;
 
@@ -54,11 +54,6 @@ namespace ControleContas.Model
             _saldo += valor + taxaIncremento;
 
             return true;
-
-
-
-
-
 
 
 
